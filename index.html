@@ -1,0 +1,25 @@
+<!-- Jaden Casing Strings -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+
+String.prototype.toJadenCase = function () {
+  var newStr = "";
+  
+  this.split(" ").forEach(function(s) { 
+      newStr = newStr + " " + s.substring(0,1).toUpperCase() + s.substring(1); 
+  });
+
+  return newStr.trim();
+}
+</script>
+</html>
