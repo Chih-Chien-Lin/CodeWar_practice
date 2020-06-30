@@ -12,14 +12,23 @@
 </body>
 <script type="text/javascript">
 
-String.prototype.toJadenCase = function () {
-  var newStr = "";
-  
-  this.split(" ").forEach(function(s) { 
-      newStr = newStr + " " + s.substring(0,1).toUpperCase() + s.substring(1); 
-  });
-
-  return newStr.trim();
+function findNextSquare(sq) {
+  // Return the next square if sq is a perfect square, -1 otherwise
+  console.log("here")
+  let sqrt = Math.sqrt(sq);
+  let newNum = 0;
+  console.log("sqrt: "+sqrt)
+  let divide = sqrt / Math.floor(sqrt);
+  if (divide != 1 ){
+    console.log("not")
+  return -1;
+  }else{
+    console.log("yes")
+    newNum = Math.floor(sqrt) + 1;
+  return newNum * newNum;
+  }
 }
+findNextSquare(225);
+findNextSquare(226);
 </script>
 </html>
