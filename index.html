@@ -2,33 +2,39 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    
+
 </body>
 <script type="text/javascript">
 
-function findNextSquare(sq) {
-  // Return the next square if sq is a perfect square, -1 otherwise
-  console.log("here")
-  let sqrt = Math.sqrt(sq);
-  let newNum = 0;
-  console.log("sqrt: "+sqrt)
-  let divide = sqrt / Math.floor(sqrt);
-  if (divide != 1 ){
-    console.log("not")
-  return -1;
-  }else{
-    console.log("yes")
-    newNum = Math.floor(sqrt) + 1;
-  return newNum * newNum;
+  function spinWords(str) {
+    var newStr = "";
+    console.log("STR: " + str)
+    str.split(" ").forEach(function (s) {
+      if (s.length > 4) {
+        let num = s.length;
+        let temp = [];
+        for (var i = 0; i < num; i++) {
+          temp[i] = s[num - (i + 1)]
+        }
+        temp = temp.join("")
+        newStr = newStr + " " + temp;
+      } else {
+        newStr = newStr + " " + s;
+      }
+    });
+
+    return newStr.trim();
   }
-}
-findNextSquare(225);
-findNextSquare(226);
+
+  spinWords("Hey fellow warriors")
 </script>
+
 </html>
