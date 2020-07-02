@@ -17,51 +17,64 @@ There will always be only one integer that appears an odd number of times. -->
 
 </body>
 <script type="text/javascript">
-function findOdd(A) {
-    var save = [];
-    var count = [];
-        A.forEach(num => {
-      var found = -1;
-      found = save.indexOf(num)
-      if (found === -1) {
-        save.push(num);
-        var tempIndex = save.indexOf(num);
-        count[tempIndex] = 1;
-      } else {
-        var tempIndex = save.indexOf(num);
-        count[tempIndex] = count[tempIndex] + 1;
+  function codewarResult(codewarrior, opponent) {
+    let newCodewarrior = codewarrior.sort((a, b) => b - a)
+    // let newOpponent = opponent.sort((a,b)=>b-a)
+    var winCount = 0;
+    var loseCount = 0;
+    var evenCount = 0;
+
+    for (var i = 0; i < codewarrior.length; i++) {
+      var temp = [];
+      var tempNum = codewarrior[i];
+      var popIndex = -1;
+      var equIndex = -1;
+      // look for the number that opponent have is less but closest to my number
+      for (var j = 0; j < opponent.length; j++) {
+        temp[j] = codewarrior[i] - opponent[j];
+        if (temp[j] > 0 && temp[j] < tempNum) {
+          tempNum = temp[j]
+          popIndex = j;
+        }
+        else if (temp[j] === 0) {
+          equIndex = j;
+        }
       }
-    });
-        let k = -1;
-        let c = 0;
-    count.forEach(index =>{
-      k+=1;
-      if(index%2 === 1 ){
-        c = k
+      // has at least one less than my number, and this is the closest
+      if (popIndex !== -1) {
+        winCount++;
+        delete opponent[popIndex];
       }
-      
-    })
-return save[c];
-}
-  findOdd([20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5])
+      // no any less but there's at least one equal;
+      else if (popIndex === -1 && equIndex !== -1) {
+        evenCount++;
+        delete opponent[equIndex]
+      }
+    }
+
+
+    loseCount = codewarrior.length - winCount - evenCount;
+    console.log("losecount: "+ loseCount)
+    console.log("wincount: "+winCount)
+    console.log("even; "+evenCount)
+    console.log("total number: "+codewarrior.length)
+    if (winCount > loseCount){
+      console.log("WIn")
+      return "Victory";
+    }
+    else if (winCount < loseCount){
+      console.log("Lose")
+      return "Defeat"
+    }
+    else{
+      console.log("even")
+      return "Stalemate"
+    }
+  }
+
+  codewarrior = [10,9,14,13,18];
+  opponent = [24,7,22,18,10];
+  codewarResult(codewarrior, opponent);
 </script>
 
 </html>
-<!-- 
-function findOdd(arr) {
-  var result, num = 0;
-
-  arr = arr.sort();
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i] === arr[i+1]) {
-      num++;
-    } else {
-      num++;
-      if (num % 2 != 0) {
-        result = arr[i];
-        break;
-      }
-    }
-  }
-  return result;
-} -->
