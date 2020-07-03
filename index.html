@@ -1,8 +1,4 @@
-<!-- Find the odd int -->
-<!-- Description:
-Given an array, find the integer that appears an odd number of times.
 
-There will always be only one integer that appears an odd number of times. -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,64 +13,40 @@ There will always be only one integer that appears an odd number of times. -->
 
 </body>
 <script type="text/javascript">
-  function codewarResult(codewarrior, opponent) {
-    let newCodewarrior = codewarrior.sort((a, b) => b - a)
-    // let newOpponent = opponent.sort((a,b)=>b-a)
-    var winCount = 0;
-    var loseCount = 0;
-    var evenCount = 0;
-
-    for (var i = 0; i < codewarrior.length; i++) {
-      var temp = [];
-      var tempNum = codewarrior[i];
-      var popIndex = -1;
-      var equIndex = -1;
-      // look for the number that opponent have is less but closest to my number
-      for (var j = 0; j < opponent.length; j++) {
-        temp[j] = codewarrior[i] - opponent[j];
-        if (temp[j] > 0 && temp[j] < tempNum) {
-          tempNum = temp[j]
-          popIndex = j;
-        }
-        else if (temp[j] === 0) {
-          equIndex = j;
-        }
-      }
-      // has at least one less than my number, and this is the closest
-      if (popIndex !== -1) {
-        winCount++;
-        delete opponent[popIndex];
-      }
-      // no any less but there's at least one equal;
-      else if (popIndex === -1 && equIndex !== -1) {
-        evenCount++;
-        delete opponent[equIndex]
+  function uniqueInOrder(iterable) {
+    var newArray = [];
+    newArray[0] = iterable[0];
+    var index = 0;
+    for (var i = 0; i < iterable.length-1; i++){
+      if(iterable[i+1] !== newArray[index]){
+        newArray.push(iterable[i+1])
+        index += 1;
       }
     }
-
-
-    loseCount = codewarrior.length - winCount - evenCount;
-    console.log("losecount: "+ loseCount)
-    console.log("wincount: "+winCount)
-    console.log("even; "+evenCount)
-    console.log("total number: "+codewarrior.length)
-    if (winCount > loseCount){
-      console.log("WIn")
-      return "Victory";
-    }
-    else if (winCount < loseCount){
-      console.log("Lose")
-      return "Defeat"
+    if (iterable.length !== 0){
+      return newArray;
     }
     else{
-      console.log("even")
-      return "Stalemate"
+      return [];
     }
+    
   }
-
-  codewarrior = [10,9,14,13,18];
-  opponent = [24,7,22,18,10];
-  codewarResult(codewarrior, opponent);
+uniqueInOrder('AAAABBBCCDAABBB') 
+uniqueInOrder('ABBCcAD')         
+uniqueInOrder([1,2,2,3,3])       
 </script>
 
 </html>
+
+<!-- function uniqueInOrder(it) {
+  var result = []
+  var last
+  
+  for (var i = 0; i < it.length; i++) {
+    if (it[i] !== last) {
+      result.push(last = it[i])
+    }
+  }
+  
+  return result
+} -->
