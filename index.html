@@ -13,40 +13,26 @@
 
 </body>
 <script type="text/javascript">
-  function uniqueInOrder(iterable) {
-    var newArray = [];
-    newArray[0] = iterable[0];
-    var index = 0;
-    for (var i = 0; i < iterable.length-1; i++){
-      if(iterable[i+1] !== newArray[index]){
-        newArray.push(iterable[i+1])
-        index += 1;
-      }
+function alphabetPosition(text) {
+  console.log(text)
+  var newArr = [];
+  var letters = /^[A-Za-z]+$/;
+  console.log(letters)
+  var newText = text.toLowerCase()
+  for (var i = 0; i < text.length ; i++){
+    // console.log(text[i])
+    if(newText[i].match(letters) != null){
+      let temp = newText.charCodeAt(i);
+      newArr.push(temp-96)
     }
-    if (iterable.length !== 0){
-      return newArray;
-    }
-    else{
-      return [];
-    }
-    
   }
-uniqueInOrder('AAAABBBCCDAABBB') 
-uniqueInOrder('ABBCcAD')         
-uniqueInOrder([1,2,2,3,3])       
+  console.log("newArr: "+newArr.join(' '));
+
+  return newArr.join(' ');
+}   
+alphabetPosition("The sunset sets at twelve o' clock.")
+
 </script>
 
 </html>
 
-<!-- function uniqueInOrder(it) {
-  var result = []
-  var last
-  
-  for (var i = 0; i < it.length; i++) {
-    if (it[i] !== last) {
-      result.push(last = it[i])
-    }
-  }
-  
-  return result
-} -->
