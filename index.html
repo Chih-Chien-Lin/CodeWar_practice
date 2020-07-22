@@ -12,38 +12,25 @@
 
 </body>
 <script type="text/javascript">
-    function dirReduc(arr) {
-        // splice(a,b) start at position a, delete number of b elements
-
-        for (var i = 0; i < arr.length; i++) {
-            console.log(i);
-            if (arr[i] === "NORTH" && arr[i + 1] === "SOUTH") {
-                arr.splice(i, 2);
-                i -= 2;
-                continue;
-            }
-            if (arr[i] === "EAST" && arr[i + 1] === "WEST") {
-                arr.splice(i, 2);
-                i -= 2;
-                continue;
-            }
-            if (arr[i] === "SOUTH" && arr[i + 1] === "NORTH") {
-                arr.splice(i, 2);
-                i -= 2;
-                continue;
-            }
-            if (arr[i] === "WEST" && arr[i + 1] === "EAST") {
-                arr.splice(i, 2);
-                i -= 2;
-                continue;
-            }
+    function longestConsec(strarr, k) {
+        var length = [];
+        for (var i = 0; i < strarr.length; i++) {
+            length[i] = {
+                "leng": strarr[i].length,
+                "index": i
+            };
         }
-
-        return arr;
+        console.log(length[1][1])
+        length.sort(function (a, b) { return b.leng - a.leng });
+        // console.log("sorted: " + length[5].leng)
+        var temp1 = length[0].index;
+        var temp2 = length[1].index;
+        var newWord = strarr[temp1] + strarr[temp2];
+        // console.log(newWord)
+        return newWord;
     }
-    // dirReduc(["NORTH", "WEST", "SOUTH", "EAST"])
-    dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"])
 
+    longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2)
 </script>
 
 </html>
