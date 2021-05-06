@@ -59,6 +59,15 @@ function toCamelCase(str) {
               return newArr2.join('')
           }
   
-      }
-  }
-  
+    }
+}
+
+var test = toCamelCase('Hello-world-this-Is-Justin')
+console.log('test: ', test)
+function toCamelCase(str){
+    var regExp=/[-_]\w/ig;
+    return str.replace(regExp,function(match){
+        console.log('what is match: ',match)
+          return match.charAt(1).toUpperCase();
+     });
+}
