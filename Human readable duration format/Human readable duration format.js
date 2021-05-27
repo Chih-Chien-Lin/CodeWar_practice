@@ -73,6 +73,7 @@ function formatDuration (seconds) {
             output = output + ', ' + list[i]
         }
     }
+    var hello
     return output
   }
   
