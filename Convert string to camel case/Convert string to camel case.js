@@ -1,7 +1,7 @@
 function toCamelCase(str) {
     console.log('Str: ', str)
-      var newArr1 = [];
-      var newArr2 = [];
+      var newArr1 = []
+      var newArr2 = []
       var isDesh = false
       var isUnder = false
       if (str == '') {

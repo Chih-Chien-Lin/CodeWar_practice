@@ -3,7 +3,7 @@ function firstNonRepeatingLetter(s) {
       return ''
     }else{
       var s1 = s.toLowerCase()
-      var count = 0;
+      var count = 0
       console.log('s1: ',s1)
     for(i = 0; i < s1.length; i++){
       console.log('i: ',i)
