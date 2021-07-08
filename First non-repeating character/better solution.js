@@ -4,5 +4,5 @@ function firstNonRepeatingLetter(s) {
         return s[i]
       }
     }
-    return '';
+    return ''
   }
