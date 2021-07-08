@@ -5,7 +5,7 @@ function toCamelCase(str) {
       var isDesh = false
       var isUnder = false
       if (str == '') {
-          return ''
+          return '';
       } else {
           if (str.includes('-')) {
             console.log('desh')
